@@ -1,0 +1,36 @@
+Laboratório didático de uma universidade:
+
+Para uma disciplina de Computação Gráfica, as máquinas precisam de "fôlego" (GPU).
+
+**Configuração Sugerida (O "Ideal"):**
+- Quantidade: 20 máquinas por laboratório.
+- Capacidade: 16GB RAM, 4 vCPUs, GPU Dedicada (ex: NVIDIA T4), 256GB SSD (para renderização).
+- SO: Windows Server (comum em labs acadêmicos p/ softwares de modelagem).
+
+
+**Estimativa na AWS (https://calculator.aws)**
+- Região: São Paulo (sa-east-1).
+- Serviço: EC2.
+- Instância: Procure por g4dn.xlarge (ótima para gráficos).
+- Armazenamento: 256 GB de EBS (General Purpose SSD - gp3).
+- Links:
+1. 1 - https://calculator.aws/#/estimate?id=8a5f817bdf21618f768c547b3b9c1396a0ff5a0a
+2. 20 - https://calculator.aws/#/estimate?id=7843215df50a94469551669ded972ca8d6d645a3
+3. 80 - https://calculator.aws/#/estimate?id=d329bc6c0fabe8cd5b392fa930884d9bab332a56
+
+**Estimativa no Google Cloud (https://cloud.google.com/products/calculator)**
+- Região: São Paulo (sa-east-1).
+- Serviço: EC2.
+- Instância: Procure por g4dn.xlarge (ótima para gráficos).
+- Armazenamento: 256 GB de EBS (General Purpose SSD - gp3).
+- Links:
+1. 1 - https://cloud.google.com/products/calculator?authuser=1&dl=CjhDaVEwTnpjMU5ERmxPUzFrT0Rjd0xUUXlNV0l0WVdReVpTMDFNR1JoWkRneVlXUmxOV1lRQVE9PRAIGiQyRDRDOUVCMy0wM0VCLTQ2OTQtOTg2MS1EMzdFQTI5MjZBM0E
+2. 20 - https://cloud.google.com/products/calculator?authuser=1&dl=CjhDaVF6TVRsa01tSmpPQzAwT1dGaExUUm1OMk10WW1ZeE1DMDFPR1psTjJKbFpqSXpOekVRQVE9PRAIGiQyRDRDOUVCMy0wM0VCLTQ2OTQtOTg2MS1EMzdFQTI5MjZBM0E
+3. https://cloud.google.com/products/calculator?authuser=1&dl=CjhDaVJsWlRabE1HRTNNUzA0T0dJMkxUUXlaRFF0WWpRMk1pMHpOak16TUdKak16UmtNakFRQVE9PRAIGiQyRDRDOUVCMy0wM0VCLTQ2OTQtOTg2MS1EMzdFQTI5MjZBM0E
+
+
+**Comparação (meus insights):**
+A principal diferença que eu observei entre os provedores está na estrutura de oferta de instâncias com GPU. Na AWS, a família g4dn já é otimizada para gráficos, apresentando um custo previsível para instâncias sob demanda. Já no Google Cloud, a flexibilidade de anexar GPUs a máquinas padrão permitiu uma customização mais fina, porém, o custo na região de São Paulo tende a ser ligeiramente superior/inferior devido às taxas de licenciamento e impostos locais refletidos na calculadora. Em ambos os casos, a economia de escala ao projetar o bloco inteiro (80 máquinas) evidencia a necessidade de modelos de reserva (como Savings Plans na AWS ou Sustained Use Discounts no GCP) para viabilizar o projeto financeiramente em longo prazo.
+
+
+

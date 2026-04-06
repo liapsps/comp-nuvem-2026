@@ -1,0 +1,19 @@
+**Configurações Técnicas Obrigatórias:**
+- Região: South America (São Paulo) — Exigência do gerente de relacionamento.
+- EC2 (Servidores): * Para somar 64 cores e 128GB RAM, precisamos usar 4 instâncias m5.4xlarge (cada uma tem 16 vCPUs e 64GB RAM). Isso totaliza 64 cores e 256GB RAM (supera o requisito de memória com folga).
+- SO: Linux (Free).
+- Armazenamento: 256 GB EBS gp3 por instância.
+- Estratégia de Pagamento: Escolhi "Reserved Instances" (1 ou 3 anos) com "All Upfront" (Pagamento adiantado), pois isso reduz drasticamente o custo mensal, atendendo ao gerente financeiro.
+- Link: https://calculator.aws/#/estimate?id=5cc5308c93b2eaa282fe73154c7331280aa1d679
+
+**RDS (Banco de Dados Oracle):**
+- Serviço: Amazon RDS for Oracle.
+- Tipo de instância: db.t3.medium (2 vCPU, 4GB RAM).
+- Database Edition: Standard Edition Two (SE2).
+- Deployment Option: "License Included" (pois a empresa não tem a licença).
+- Storage: 512 GB (gp3).
+- Management: Selecione as opções de backup e atualizações automáticas (que é o que os devs pediram).
+- Link: https://calculator.aws/#/estimate?id=16cbd2b5bf42b048de91ee254e4522b3c98b8e85
+
+**Explicação do Processo e Tomada de Decisão:**
+Pra elaborar a estimativa de migração, eu foquei em equilibrar os requisitos técnicos com as demandas das diferentes áreas da empresa. A primeira decisão foi fixar a região em São Paulo (sa-east-1), cumprindo a exigência do gerente de relacionamentos de hospedar a aplicação no Brasil. Para a parte de computação, decidi utilizar 4 instâncias do tipo c5.4xlarge. Fiz essa escolha porque, juntas, elas somam exatamente os 64 cores e 128 GB de RAM solicitados. Escolher instâncias maiores em menor quantidade ajuda a economizar no custo total de armazenamento, já que pagamos por apenas 4 volumes de 256 GB em vez de dezenas de discos menores. Já pensando no pedido do gerente financeiro para reduzir o custo mensal, configurei a estratégia de pagamento como Instâncias Reservadas por 3 anos com pagamento total adiantado (All Upfront), que é onde conseguimos o maior desconto da AWS. Já para o banco de dados Oracle, selecionei o Amazon RDS na modalidade "License Included", já que a empresa ainda não possui a licença. Essa escolha também atende aos desenvolvedores, pois, sendo um serviço gerenciado (PaaS), a AWS fica responsável por toda a manutenção do sistema operacional e atualizações de segurança. Por fim, utilizei volumes de disco do tipo gp3 em toda a estimativa, por ser a opção de SSD com melhor custo-benefício atualmente,
